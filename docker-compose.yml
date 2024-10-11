@@ -1,0 +1,33 @@
+version: '3'
+services:
+  api:
+    build: ./API
+    ports:
+      - '4000:4000'
+    depends_on:
+      - db
+
+  frontend:
+    build: ./FRONDEND
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: userpostgres
+      POSTGRES_PASSWORD: yvbie76ic7
+      POSTGRES_DB: nomDeTaDB
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./postgreSQL.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:
+
+
