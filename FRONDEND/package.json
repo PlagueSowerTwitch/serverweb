@@ -1,0 +1,16 @@
+{
+  "name": "oilguy",
+  "version": "1.0.0",
+  "description": "Frontend : Frederick / Tran /\r Backend : Pierre-Louis / + docker et api\r sécurisation (chmod) : Tran\r config NGINX : \r système d'authentification : Giulian / \r Redaction compte-rendus :",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "pg": "^8.13.0"
+  }
+}

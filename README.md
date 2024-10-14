@@ -12,10 +12,9 @@ Redaction compte-rendus :
 
 
 
+/!\ on va l'utiliser a la fin 
 
-
-lancer le docker avec docker build .   ?
-
-push tt sur git 
+lancer le docker avec "docker build ."  
+ou "docker-compose up --build"
 
 
