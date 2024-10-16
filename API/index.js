@@ -5,17 +5,29 @@ const BDD = require('./BDD');
 
 
 // serv web a spammer avec post man qui  requpere la req et l'envoie a la focntion 
+// // fair un dossier pour les get / put / post / autre
+
 
 
 app.use(express.json()) //middelware 
+
+
+//pas utilisé pour le moments 
 app.post('/api', (req, res, ) => {    
-  console.log('ok')
-
-  const test = BDD.TESTfucntion(req.body);
-
+  console.log('api req ')
   res.send('reçu !')
 });
+
+//pour les req api sur la bdd
+app.post('/api/BDD', (req, res, ) => {    
+  console.log('api bdd req')
+  BDD.TESTfucntion(req.body)
+  res.send('reçu !')
+});
+
 module.exports = app
+
+
 
 
 app.listen(port, () => {
