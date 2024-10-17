@@ -1,0 +1,88 @@
+/* Container du carousel */
+.carousel {
+    position: relative;
+    width: 20rem;
+    height: 40rem;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 1rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.product-container {
+    display: flex;
+    margin: 3rem;
+    margin-left: 15rem;
+}
+
+.text-product {
+    flex: 1;
+    padding-right: 5rem;
+    margin-left: 15rem;
+}
+
+.text-product h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.stars {
+    margin: 10px 0;
+}
+
+.stars .star {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.description {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
+/*Style du select*/
+
+select {
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    width: 20rem;
+    padding: 1rem 4rem 1rem 1rem;
+    background-color: #87CEEB;
+    color: rgb(255, 213, 246);
+    border-radius: 10px;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
