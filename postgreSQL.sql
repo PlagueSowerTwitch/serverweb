@@ -21,8 +21,7 @@ CREATE TABLE users (
 id_user SERIAL PRIMARY KEY,
 email VARCHAR(50) UNIQUE NOT NULL,
 motdepasse TEXT NOT NULL CHECK (length(motdepasse) >= 8),
-nom VARCHAR(30) NOT NULL,
-prenom VARCHAR(30) NOT NULL
+nom VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE articles (

@@ -42,9 +42,9 @@ app.get('/:id', (req, res)=>{ // get user par id
 
 
 app.post('/', (req, res)=>{ //creer un utiliateur avec un id
-    const { id_user, name, email, motdepasse, prenom } = req.body;
+    const { id_user, name, email, motdepasse,  } = req.body;
 
-    pool.query('INSERT INTO users (id_user, nom, prenom, email, motdepasse) VALUES ($1, $2, $3, $4, $5)', [id_user, name, prenom, email, motdepasse], (err, result) => {
+    pool.query('INSERT INTO users (id_user, nom, email, motdepasse) VALUES ($1, $2, $3, $4)', [id_user, name, email, motdepasse], (err, result) => {
     if (err) {
         console.log('PANIK')
         res.status(201).send(err);
@@ -57,9 +57,9 @@ app.post('/', (req, res)=>{ //creer un utiliateur avec un id
  
 
 app.put('/:id', (req, res)=>{ //modifier un user
-    const { id_user, name, email, motdepasse, prenom } = req.body;
+    const { id_user, name, email, motdepasse,  } = req.body;
     const id = parseInt(req.params.id)
-    pool.query(`UPDATE users SET nom = $1, prenom = $2, email = $3, motdepasse = $4   WHERE id_user = ${id}`,[name, prenom, email, motdepasse],(err, result) => {
+    pool.query(`UPDATE users SET nom = $1, email = $2, motdepasse = $3   WHERE id_user = ${id}`,[name, email, motdepasse],(err, result) => {
           if (err) {
             console.log('PANIK')
             res.status(201).send(err);
