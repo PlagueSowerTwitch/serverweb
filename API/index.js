@@ -1,39 +1,37 @@
 const express = require('express');
 const app = express();
 const port = 4000;
-const BDD = require('./BDD');
 
 
-// serv web a spammer avec post man qui  requpere la req et l'envoie a la focntion 
-// // fair un dossier pour les get / put / post / autre
+//import des routes
+const userRoutes = require('./user/userRoutes');
+const authenticatorRoutes = require('./authenticator/authenticatorRoutes');
+// const productRoutes = require('./product/productRoutes');
 
-
-
-app.use(express.json()) //middelware 
-
-
-//pas utilisé pour le moments 
-app.post('/api', (req, res, ) => {    
-  console.log('api req ')
-  res.send('reçu !')
-});
-
-//pour les req api sur la bdd
-app.post('/api/BDD', (req, res, ) => {    
-  console.log('api bdd req')
-  BDD.TESTfucntion(req.body)
-  res.send('reçu !')
-});
-
-module.exports = app
+//middelware 
+app.use(express.json()) 
 
 
 
+// Routes API
+app.use('/api/user', userRoutes);
+app.use('/api/product', authenticatorRoutes);
+// app.use('/api/authenticator', productRoutes);
+
+
+
+//function gestion erreur ?
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-  });
+console.log(`Server is running on http://localhost:${port}`);
+});
  
+module.exports = app;
+
+
+
+
+
 
 
 
