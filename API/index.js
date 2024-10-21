@@ -6,17 +6,16 @@ const port = 4000;
 //import des routes
 const userRoutes = require('./user/userRoutes');
 const authenticatorRoutes = require('./authenticator/authenticatorRoutes');
-// const productRoutes = require('./product/productRoutes');
+const articlesRoutes = require('./articles/articlesRoutes');
 
 //middelware 
 app.use(express.json()) 
 
 
-
 // Routes API
 app.use('/api/user', userRoutes);
-app.use('/api/product', authenticatorRoutes);
-// app.use('/api/authenticator', productRoutes);
+app.use('/api/articles', articlesRoutes);
+app.use('/api/authenticator',authenticatorRoutes );
 
 
 

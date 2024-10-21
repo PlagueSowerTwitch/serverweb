@@ -1,32 +1,18 @@
 const express = require('express');
 
 const app = express();
-const router = express.Router();
 
 
 
-
-router.get('/', (req, res) => {
-  res.json({ message: 'Liste de toutes les ressources' });
-});
-
-router.post('/', (req, res) => {
-  res.json({ message: 'Ressource créée' });
-});
-
-router.get('/:id', (req, res) => {
-  res.json({ message: `Ressource avec l'ID ${req.params.id}` });
-});
-
-router.put('/:id', (req, res) => {
-  res.json({ message: `Mise à jour de la ressource avec l'ID ${req.params.id}` });
-});
-
-router.delete('/:id', (req, res) => {
-  res.json({ message: `Suppression de la ressource avec l'ID ${req.params.id}` });
-});
-
-app.use('/api/resources', router);
+app.get('/test', (req, res) =>{
+  res.sendFile(`${__dirname}/Asupprimer/login.html`)   
+})
+app.get('/login.css', (req, res) =>{
+  res.sendFile(`${__dirname}/Asupprimer/login.css`)   
+})
+app.get('/bdd.js', (req, res) =>{
+  res.sendFile(`${__dirname}/Asupprimer/BDD.js`)   
+})
 
 
 

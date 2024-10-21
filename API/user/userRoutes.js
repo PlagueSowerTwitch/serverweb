@@ -12,7 +12,6 @@ const pool = new Pool({
   port: 5432
 });
 
-// CRUD routes pour les utilisateurs
 
 app.get('/', (req, res)=>{ // get tt les user 
     pool.query('SELECT * FROM users', (err, result) => { //utilisation de result pour eviter la confusion avec res 
@@ -20,7 +19,7 @@ app.get('/', (req, res)=>{ // get tt les user
             console.log('PANIK')
             res.status(201).send(err);
         }
-        res.status(200).json(result);
+        res.status(200).json(result.rows); //?.rows;
         console.log(result)
 
     });
@@ -34,7 +33,7 @@ app.get('/:id', (req, res)=>{ // get user par id
             console.log('PANIK')
             res.status(201).send(err);
         }
-        res.status(200).json(result);
+        res.status(200).json(result.rows);
         console.log(result)
     });
 });
@@ -49,7 +48,7 @@ app.post('/', (req, res)=>{ //creer un utiliateur avec un id
         console.log('PANIK')
         res.status(201).send(err);
     }
-      res.status(200).send(result);
+      res.status(200).send(" ajouté !");
       console.log(result)
     })
 });
@@ -57,14 +56,14 @@ app.post('/', (req, res)=>{ //creer un utiliateur avec un id
  
 
 app.put('/:id', (req, res)=>{ //modifier un user
-    const { id_user, name, email, motdepasse,  } = req.body;
+    const { name, email, motdepasse,  } = req.body;
     const id = parseInt(req.params.id)
     pool.query(`UPDATE users SET nom = $1, email = $2, motdepasse = $3   WHERE id_user = ${id}`,[name, email, motdepasse],(err, result) => {
           if (err) {
             console.log('PANIK')
             res.status(201).send(err);
           }
-          res.status(200).send(result);
+          res.status(200).send("informations modifiées !");
           console.log(result)
 
         })
@@ -77,7 +76,7 @@ app.delete('/:id', (req, res)=>{ //supprimer un user
         console.log('PANIK')
         res.status(201).send(err);
         }
-        res.status(200).send(result);
+        res.status(200).send("user supprimé !");
         console.log(result)
 
     })

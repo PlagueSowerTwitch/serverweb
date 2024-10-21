@@ -82,17 +82,3 @@ app.get('/', function (req, res) {
  });
 
 
-
-//app.use(express.json()) //middelware 
-
-//app.post('/api', (req, res, ) => {    
- //       console.log(req)
- //       res.send('reçu !')
-//});
-
-//module.exports = app
-
-
-//server.listen(3000, () => {
-  //  console.log("Server running at http://127.0.0.1:3000")
-//})
