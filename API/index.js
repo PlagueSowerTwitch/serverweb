@@ -17,9 +17,18 @@ app.use('/api/user', userRoutes);
 app.use('/api/articles', articlesRoutes);
 app.use('/api/authenticator',authenticatorRoutes );
 
+//----------------------------------------------pour les test ----------------
+    app.get('/test', (req, res) =>{
+      res.sendFile(`${__dirname}/Asupprimer/login.html`)   
+    })
+    app.get('/login.css', (req, res) =>{
+      res.sendFile(`${__dirname}/Asupprimer/login.css`)   
+    })
+    app.get('/bdd.js', (req, res) =>{
+      res.sendFile(`${__dirname}/Asupprimer/BDD.js`)   
+    })
+//----------------------------------------------------------------------------------
 
-
-//function gestion erreur ?
 
 app.listen(port, () => {
 console.log(`Server is running on http://localhost:${port}`);
