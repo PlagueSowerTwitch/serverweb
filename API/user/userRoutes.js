@@ -27,7 +27,7 @@ app.get('/', (req, res)=>{ // get all user
 app.get('/:email', (req, res)=>{ // get user by email
     const email = req.params.email
 
-    pool.query(`SELECT CASE WHEN EXISTS(SELECT email FROM users WHERE email='${email}') THEN 1 ELSE 0 END`, (err, result) => { //utilisation de result pour eviter la confusion avec res 
+    pool.query(`SELECT CASE WHEN EXISTS(SELECT email FROM users WHERE email = $1) THEN 1 ELSE 0 END`,[ email ], (err, result) => { //utilisation de result pour eviter la confusion avec res 
         if (err) {
             console.log(err)
             res.status(201).send("error "+err.detail);
@@ -58,7 +58,7 @@ app.post('/', (req, res)=>{ //creer un utiliateur avec un id
 app.put('/:id', (req, res)=>{ //modifier un user
     const { name, email, motdepasse,  } = req.body;
     const id = parseInt(req.params.id)
-        pool.query(`UPDATE users SET nom = $1, email = $2, motdepasse = $3   WHERE id_user = ${id}`,[name, email, motdepasse],(err, result) => {
+        pool.query(`UPDATE users SET nom = $1, email = $2, motdepasse = $3   WHERE id_user = $4`,[name, email, motdepasse, id],(err, result) => {
             if (err) {
                 console.log(err)
                 res.status(201).send("error "+err.detail);
