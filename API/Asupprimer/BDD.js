@@ -68,11 +68,10 @@ registerBtn.addEventListener('click', () => {
             .then(response => {
                 if (!response.ok) {
                 }
-                console.log(response);
                 return response.json();  
             })
             .then(data => {
-                console.log(data[0].case); 
+                console.log(data[0].case); //test
                 if (data[0]['case'] === 0){
                     fetch("http://localhost:4000/api/user/", { 
                         method: `POST`, 
@@ -103,12 +102,35 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
     document.getElementById('checklogin').addEventListener('click',function(){
         console.log("le bouton login a ete utilise")
-        let resultat = pool.query("SELECT CASE WHEN EXISTS(SELECT * FROM users WHERE email='"+emaillogin+"' AND motdepasse='"+mdplogin+"') THEN 1 ELSE 0 END;");
-        if (resultat === 1){
-           window.location = "compte.html"; 
-        } else {
-           alert("Mauvais mot de passe ou d'email");
-        }
+
+        // let resultat = pool.query("SELECT CASE WHEN EXISTS(SELECT * FROM users WHERE email='"+emaillogin+"' AND motdepasse='"+mdplogin+"') THEN 1 ELSE 0 END;");
+        fetch("http://localhost:4000/api/authenticator/", { 
+            method: `POST`, 
+            headers: {'Content-Type': 'application/json',}, 
+            body: JSON.stringify({
+            email: `${emaillogin.value}`,
+            motdepasse: `${mdplogin.value}`
+            }) 
+        })
+        .then(response => {
+            if (!response.ok) {
+            }
+            return response.json();  
+        })
+        .then(data => {
+            console.log(data)
+            console.log(data[0]['case']); //test
+            if (data[0]['case'] === 1){
+                window.location = "compte.html"; 
+             } else {
+                alert("Mauvais mot de passe ou d'email");
+             }   
+        })
+        // if (resultat === 1){
+        //    window.location = "compte.html"; 
+        // } else {
+        //    alert("Mauvais mot de passe ou d'email");
+        // }
     });
 });
 

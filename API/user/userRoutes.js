@@ -13,18 +13,18 @@ const pool = new Pool({
 });
 
 
-app.get('/', (req, res)=>{ // get tt les user 
+app.get('/', (req, res)=>{ // get all user 
     pool.query('SELECT * FROM users', (err, result) => { //utilisation de result pour eviter la confusion avec res 
         if (err) {
             console.log('PANIK')
             res.status(201).send(err);
         }
-        res.status(200).json(result.rows); //?.rows;
+        res.status(200).json(result.rows); 
         console.log(result)
 
     });
 });
-app.get('/:email', (req, res)=>{ // get user par email
+app.get('/:email', (req, res)=>{ // get user by email
     const email = req.params.email
 
     pool.query(`SELECT CASE WHEN EXISTS(SELECT email FROM users WHERE email='${email}') THEN 1 ELSE 0 END`, (err, result) => { //utilisation de result pour eviter la confusion avec res 
