@@ -60,7 +60,6 @@ registerBtn.addEventListener('click', () => {
             
 
 
-            // let resultat = pool.query("SELECT CASE WHEN EXISTS(SELECT email FROM users WHERE email='"+emailsignup+"') THEN 1 ELSE 0 END;");
             fetch(`http://localhost:4000/api/user/${emailsignup.value}`, { 
                 method: `GET`, 
                 headers: {'Content-Type': 'application/json',}, 
@@ -71,7 +70,6 @@ registerBtn.addEventListener('click', () => {
                 return response.json();  
             })
             .then(data => {
-                console.log(data[0].case); //test
                 if (data[0]['case'] === 0){
                     fetch("http://localhost:4000/api/user/", { 
                         method: `POST`, 
@@ -88,11 +86,6 @@ registerBtn.addEventListener('click', () => {
             })
             
 
-            // if (resultat === 0){
-            //     pool.query("INSERT INTO users (email,motdepasse,nom) VALUES ('"+emailsignup+"','"+mdpsignup+"','"+nomsignup+"')");  
-            // } else {
-            //     alert("votre compte existe déjà, veuillez vous connecter.");
-            // }
         }
     });
 });
@@ -103,7 +96,6 @@ loginBtn.addEventListener('click', () => {
     document.getElementById('checklogin').addEventListener('click',function(){
         console.log("le bouton login a ete utilise")
 
-        // let resultat = pool.query("SELECT CASE WHEN EXISTS(SELECT * FROM users WHERE email='"+emaillogin+"' AND motdepasse='"+mdplogin+"') THEN 1 ELSE 0 END;");
         fetch("http://localhost:4000/api/authenticator/", { 
             method: `POST`, 
             headers: {'Content-Type': 'application/json',}, 
@@ -119,18 +111,13 @@ loginBtn.addEventListener('click', () => {
         })
         .then(data => {
             console.log(data)
-            console.log(data[0]['case']); //test
             if (data[0]['case'] === 1){
                 window.location = "compte.html"; 
              } else {
                 alert("Mauvais mot de passe ou d'email");
              }   
         })
-        // if (resultat === 1){
-        //    window.location = "compte.html"; 
-        // } else {
-        //    alert("Mauvais mot de passe ou d'email");
-        // }
+
     });
 });
 
